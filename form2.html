@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fomr1</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="searchInput">
+        <input type="text" id="searchInput" />
+      </label>
+      <button type="submit">submit</button>
+    </form>
+    <section>
+      <h1>result</h1>
+      <div id="result"></div>
+    </section>
+  </body>
+  <script>
+    const data = ["maça", "abacate", "laranja", "mexirica"];
+    const form = document.getElementsByTagName('form')[0]
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault()
+        const inputvalue = document.getElementById("searchInput").value
+        const divResult = document.getElementById("result")
+         
+        if (data.includes(inputvalue)) {
+          divResult.innerHTML = `<p>temos sim !!!!</p>`
+        } else {
+          divResult.innerHTML = `<p>nao temos :/</p>`
+        }
+        
+        
+
+        document.getElementById("searchInput").value = ''
+    })
+  </script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fomr1</title>
+  </head>
+  <body>
+    <form id="form">
+      <label for="searchInput">
+        <input type="text" id="searchInput" />
+      </label>
+      <button type="submit">submit</button>
+    </form>
+    <section>
+      <h1>list</h1>
+      <div id="list"></div>
+    </section>
+  </body>
+  <script>
+    const data = [];
+    const form = document.getElementsByTagName('form')[0]
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault()
+        const inputvalue = document.getElementById("searchInput").value
+         
+        if (!data.includes(inputvalue)) {
+            data.push(inputvalue)
+        }
+        
+        const divList = document.getElementById("list")
+        
+        divList.innerHTML = `<ul>${data.map((value) => `<li>${value}</li>`)}</ul>`
+
+        document.getElementById("searchInput").value = ''
+    })
+  </script>
+</html>
