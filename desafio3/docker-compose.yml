@@ -1,9 +1,17 @@
-version: '3.1'
+version: '3'
 
 services:
 
   db:
     image: mysql
     restart: always
+    container_name: agenda_db
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=agenda_db
+      - MYSQL_TCP_PORT=3303
+    volumes:
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    ports:
+      - 3303:3303
+    
